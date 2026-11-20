@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Harsh & Anjali — Royal Wedding Invitation | 4 December 2026</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Cinzel, Cormorant Garamond, Great Vibes, Playfair Display, Noto Serif Devanagari -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Noto+Serif+Devanagari:wght@600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            cinzel: ['Cinzel', 'serif'],
+            serif: ['"Playfair Display"', 'serif'],
+            garamond: ['"Cormorant Garamond"', 'serif'],
+            script: ['"Great Vibes"', 'cursive'],
+            hindi: ['"Noto Serif Devanagari"', 'serif'],
+          },
+          colors: {
+            noor: {
+              cream: '#FDF2E3',
+              parchment: '#F7E7CE',
+              sage: '#6C846B',
+              sageLight: '#DCE7DA',
+              terracotta: '#8A522C',
+              rosePill: '#F1B5AC',
+              roseText: '#7D3532',
+              gold: '#C99E44',
+              deepGold: '#8F6A1E',
+              burgundy: '#681825',
+              ink: '#4A2C18'
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    html, body {
+      background-color: #DCE7DA;
+      color: #4A2C18;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Sunlit Sage-Green & Cream Courtyard Background */
+    .courtyard-bg {
+      background: linear-gradient(180deg, #E8F1F5 0%, #E3EFE4 40%, #F7EBDD 100%);
+    }
+
+    /* Noor Patra Sage-Green Dotted Side Borders */
+    .sage-ornate-border {
+      border-left: 4px solid #6C846B;
+      border-right: 4px solid #6C846B;
+      box-shadow: inset 3px 0 0 #FDF2E3, inset 5px 0 0 #8BA289, inset -3px 0 0 #FDF2E3, inset -5px 0 0 #8BA289;
+    }
+
+    /* Gold Foil Shimmer Gradient */
+    .gold-foil {
+      background: linear-gradient(135deg, #A37A27 0%, #F3DC99 35%, #C99E44 55%, #F8E8B7 80%, #8A6316 100%);
+    }
+
+    /* Tap to Open Mughal Cartouche Button */
+    .cartouche-btn {
+      background: linear-gradient(180deg, #F6C3BA 0%, #ECA89E 100%);
+      border: 2px solid #B68452;
+      box-shadow: 0 4px 14px rgba(138, 82, 44, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.65);
+    }
+
+    /* ===================================================================== */
+    /* ANCIENT ROYAL SCROLL (FARMAAN) CONTINUOUS SCROLL-LINKED UNROLLING     */
+    /* ===================================================================== */
+    .royal-scroll-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    .scroll-roller-top,
+    .scroll-roller-bottom {
+      height: 24px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #7A4B21 0%, #E7C682 28%, #C49342 62%, #5C3513 100%);
+      border: 1.5px solid #4A2A0E;
+      box-shadow: 0 7px 16px rgba(74, 44, 24, 0.36), inset 0 2px 3px rgba(255, 255, 255, 0.7);
+      position: relative;
+      z-index: 20;
+    }
+
+    /* Wooden/Brass Finial Knobs on Both Ends of Scroll Rod */
+    .scroll-roller-top::before,
+    .scroll-roller-top::after,
+    .scroll-roller-bottom::before,
+    .scroll-roller-bottom::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 15px;
+      height: 30px;
+      border-radius: 6px;
+      background: linear-gradient(180deg, #5C3614 0%, #D9B166 50%, #4E2C0F 100%);
+      border: 1px solid #3D210A;
+    }
+    .scroll-roller-top::before,
+    .scroll-roller-bottom::before { left: -8px; }
+    .scroll-roller-top::after,
+    .scroll-roller-bottom::after { right: -8px; }
+
+    /* Unrolling Parchment Sheet: Height driven live by scroll progress (0px -> full height) */
+    .scroll-parchment-sheet {
+      background: linear-gradient(180deg, #E3C79B 0%, #FDF3E2 12%, #FAF0DD 88%, #DFC090 100%);
+      border-left: 2px solid #C49852;
+      border-right: 2px solid #C49852;
+      box-shadow: inset 0 16px 22px -10px rgba(92, 54, 20, 0.45), inset 0 -16px 22px -10px rgba(92, 54, 20, 0.45), 0 10px 25px rgba(74, 44, 24, 0.14);
+      overflow: hidden;
+      height: 0px;
+      will-change: height;
+    }
+
+    .scroll-parchment-inner {
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .royal-scroll-wrapper.unrolled .scroll-parchment-sheet {
+      height: auto;
+    }
+    .royal-scroll-wrapper.unrolled .scroll-parchment-inner {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===================================================================== */
+    /* ROPE-TIED HANGING COUPLE GALLERY (SWAYING IN AIR + HORIZONTAL SWIPE)  */
+    /* ===================================================================== */
+    .hanging-rope-line {
+      height: 6px;
+      background: repeating-linear-gradient(
+        -45deg,
+        #8B5A2B,
+        #8B5A2B 6px,
+        #D9B166 6px,
+        #D9B166 12px
+      );
+      border-radius: 999px;
+      box-shadow: 0 4px 8px rgba(74, 44, 24, 0.28);
+    }
+
+    @keyframes ropeSwayLeft {
+      0%, 100% { transform: rotate(-2.4deg) translateY(0px); }
+      50% { transform: rotate(2.2deg) translateY(-4px); }
+    }
+    @keyframes ropeSwayRight {
+      0%, 100% { transform: rotate(2.3deg) translateY(-3px); }
+      50% { transform: rotate(-2.1deg) translateY(1px); }
+    }
+
+    .hanging-frame-a {
+      transform-origin: top center;
+      animation: ropeSwayLeft 4.4s ease-in-out infinite;
+    }
+    .hanging-frame-b {
+      transform-origin: top center;
+      animation: ropeSwayRight 4.9s ease-in-out infinite;
+    }
+
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Cover Envelope Door Parting Animation */
+    #coverEnvelopeOverlay {
+      transition: transform 0.95s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.8s ease;
+    }
+    #coverEnvelopeOverlay.opened {
+      transform: translateY(-105%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Floating Petals */
+    @keyframes floatPetal {
+      0% { transform: translateY(-10%) translateX(0px) rotate(0deg); opacity: 0; }
+      15% { opacity: 0.85; }
+      85% { opacity: 0.75; }
+      100% { transform: translateY(105vh) translateX(35px) rotate(320deg); opacity: 0; }
+    }
+    .petal {
+      position: fixed;
+      top: -30px;
+      pointer-events: none;
+      z-index: 30;
+      animation: floatPetal linear infinite;
+    }
+
+    @keyframes gentleFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+    .float-slow {
+      animation: gentleFloat 4s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="font-garamond selection:bg-noor-gold selection:text-white">
+
+  <!-- Ambient Floating Rose & Lotus Petals -->
+  <div id="petalsContainer" aria-hidden="true"></div>
+
+  <!-- ===================================================================== -->
+  <!-- MAIN MOBILE-FIRST PALACE CONTAINER (Centered 440px Frame)             -->
+  <!-- ===================================================================== -->
+  <div class="max-w-[440px] mx-auto relative min-h-screen courtyard-bg shadow-[0_0_70px_rgba(62,84,61,0.3)] overflow-hidden">
+
+    <!-- =================================================================== -->
+    <!-- SCREEN 1: NOOR PATRA COVER ENVELOPE ("श्री गणेशाय नमः" + Tap to open) -->
+    <!-- =================================================================== -->
+    <div id="coverEnvelopeOverlay" class="fixed inset-0 z-50 flex items-center justify-center bg-[#C9D8C7]/90 backdrop-blur-xs">
+      <div class="w-full max-w-[440px] h-full bg-[#FDF2E3] sage-ornate-border flex flex-col items-center justify-center px-7 text-center relative shadow-2xl">
+        
+        <!-- Subtle Floral Watermark Corners -->
+        <div class="absolute top-4 left-4 w-12 h-12 border-t-2 border-l-2 border-noor-terracotta/30 rounded-tl-xl"></div>
+        <div class="absolute top-4 right-4 w-12 h-12 border-t-2 border-r-2 border-noor-terracotta/30 rounded-tr-xl"></div>
+        <div class="absolute bottom-4 left-4 w-12 h-12 border-b-2 border-l-2 border-noor-terracotta/30 rounded-bl-xl"></div>
+        <div class="absolute bottom-4 right-4 w-12 h-12 border-b-2 border-r-2 border-noor-terracotta/30 rounded-br-xl"></div>
+
+        <!-- Line-Art Lord Ganesha Emblem (Matches Screenshot 2) -->
+        <div class="mb-3 float-slow">
+          <svg viewBox="0 0 120 130" class="w-24 h-28 mx-auto text-[#8A522C]" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Crown (Mukut) -->
+            <path d="M46 32 Q60 12 74 32 Z" />
+            <path d="M42 38 Q60 26 78 38" />
+            <circle cx="60" cy="17" r="3" fill="currentColor" />
+            <!-- Forehead & Tilak -->
+            <path d="M42 38 C36 48 38 62 46 68" />
+            <path d="M78 38 C84 48 82 62 74 68" />
+            <path d="M60 36 L60 45" stroke-width="2.4" />
+            <!-- Large Ornate Ears -->
+            <path d="M42 42 C24 38 22 64 38 68 C42 69 44 65 44 62" />
+            <path d="M78 42 C96 38 98 64 82 68 C78 69 76 65 76 62" />
+            <!-- Eyes -->
+            <path d="M48 50 Q52 47 55 50" />
+            <path d="M65 50 Q68 47 72 50" />
+            <!-- Curved Trunk -->
+            <path d="M56 54 C56 68 68 74 65 86 C63 92 54 90 55 83" />
+            <!-- Tusks -->
+            <path d="M49 64 L45 70" />
+            <path d="M71 64 L74 68" />
+            <!-- Blessing Hand & Seated Lotus Base -->
+            <path d="M35 76 C28 84 30 98 44 102 C54 105 68 105 78 100 C88 94 88 80 78 74" />
+            <path d="M32 108 Q60 118 88 108" />
+            <path d="M44 114 Q60 124 76 114" />
+          </svg>
+        </div>
+
+        <!-- Sanskrit Invocation -->
+        <p class="font-hindi text-2xl font-bold text-[#8A522C] tracking-wide">
+          || श्री गणेशाय नमः ||
+        </p>
+
+        <!-- Personalized Guest Greeting (Automatically reads ?guest=Name from URL if shared!) -->
+        <h1 id="guestGreetingHeading" class="font-serif text-3xl sm:text-4xl font-bold text-[#8A522C] mt-4 leading-tight">
+          Dear Guest &amp;<br/>Family
+        </h1>
+
+        <p class="font-serif text-base text-[#8A522C]/90 mt-4 max-w-[265px] leading-relaxed">
+          we cordially invite you to grace the auspicious occasion of the marriage of...
+        </p>
+
+        <!-- Ornate Pink Cartouche "Tap to open" Button (Matches Screenshot 2) -->
+        <button onclick="openRoyalInvitation()" class="mt-7 px-9 py-3 rounded-full cartouche-btn text-[#7D3532] font-serif font-bold text-lg tracking-wide hover:scale-105 active:scale-95 transition-transform cursor-pointer">
+          Tap to open
+        </button>
+
+        <span class="mt-4 text-[11px] font-cinzel tracking-[0.2em] uppercase text-[#8A522C]/60">
+          Harsh &amp; Anjali • Dec 2026
+        </span>
+      </div>
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- FLOATING TOP BAR (Music Chimes & Quick Scroll Links)                -->
+    <!-- =================================================================== -->
+    <header class="sticky top-0 z-40 px-4 py-2.5 bg-[#FDF2E3]/90 backdrop-blur-md border-b border-noor-sage/30 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="w-7 h-7 rounded-full text-white font-cinzel text-xs font-bold flex items-center justify-center shadow-xs">
+          <img
+                src="A&H.png"
+                alt="Harsh and Anjali"
+                class="w-full h-full object-cover object-top"
+                onerror="this.onerror=null; this.src='https://placehold.co/400x480/FDF2E3/8A522C?text=Harsh+%26+Anjali';"
+              />
+        </span>
+        <span class="font-cinzel text-[11px] font-bold tracking-[0.18em] uppercase text-noor-terracotta">
+          Shubh Vivah
+        </span>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <a href="#programsScrollSection" class="text-[11px] font-cinzel font-bold uppercase tracking-wider text-noor-sage hover:text-noor-terracotta px-2 py-1">
+          Programs
+        </a>
+        <a href="#rsvpSection" class="text-[11px] font-cinzel font-bold uppercase tracking-wider bg-noor-sage text-white px-3 py-1 rounded-full shadow-xs">
+          RSVP
+        </a>
+        <button onclick="toggleTempleChimes()" class="w-7 h-7 rounded-full border border-noor-sage/50 flex items-center justify-center text-noor-sage hover:bg-noor-sage/10 transition" title="Toggle Sacred Chimes">
+          <i id="chimeIcon" data-lucide="volume-x" class="w-3.5 h-3.5"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- =================================================================== -->
+    <!-- SECTION 2: SUNLIT MARBLE MANDAP & LOTUS POOL HERO (Matches Image 1) -->
+    <!-- =================================================================== -->
+    <section class="relative pt-4 pb-8 px-4 text-center">
+
+      
+      <!-- Illustrated White Marble Pavilion & Lotus Reflection Pool Scene -->
+      <div class="relative rounded-3xl overflow-hidden border-2 border-noor-gold/60 shadow-[0_14px_35px_rgba(74,44,24,0.16)] bg-gradient-to-b from-[#DCEEF8] via-[#F7EFE4] to-[#D7ECE6]"  style="background-image: url('mandap-bg.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; height">
+        
+        <!-- =============================================================== -->
+        <!-- [OPTIONAL HERO MANDAP BACKDROP IMAGE]                            -->
+        <!-- If you save your palace mandap image as "mandap-bg.jpg", it     -->
+        <!-- displays here; otherwise a bespoke vector palace renders!       -->
+        <!-- =============================================================== -->
+	
+	<div class = "relative h-20 w-full flex flex-col items-center justify-end">
+              <img
+                src="A&H.png"
+                alt="Harsh and Anjali logo"
+		class="block mx-auto w-[120px] h-[120px] border-2 border-transparent translate-y-20"
+                onerror="this.onerror=null; this.src='https://placehold.co/400x480/FDF2E3/8A522C?text=Harsh+%26+Anjali';"
+              />
+         </div>
+        <div class="relative h-56 w-full flex flex-col items-center justify-end overflow-hidden">
+          
+          <div class="absolute inset-x-0 bottom-0 h-16 "></div>
+        </div>
+
+        <!-- Couple Portrait Arch & Names Overlay -->
+        <div class="relative -mt-14 px-4 pb-6 ">
+          
+          <!-- ============================================================= -->
+          <!-- [IMAGE SLOT 1]: MAIN COUPLE PHOTO                             -->
+          <!-- HOW TO REPLACE: Change `src="..."` to your couple photo path  -->
+          <!-- ============================================================= -->
+          <div class="w-48 h-56 mx-auto rounded-t-full p-1.5 gold-foil shadow-lg">
+            <div class="w-full h-full rounded-t-full overflow-hidden bg-white border border-noor-deepGold flex">
+              <img
+                src="tutu anjali.png"
+                alt="Harsh and Anjali"
+                class="w-[190px] h-[250px] object-contain object-center"
+                onerror="this.onerror=null; this.src='https://placehold.co/400x480/FDF2E3/8A522C?text=Harsh+%26+Anjali';"
+              />
+            </div>
+          </div>
+          <!-- END OF [IMAGE SLOT 1] -->
+
+          <p class="font-cinzel text-[10px] tracking-[0.26em] uppercase text-noor-sage font-bold mt-4">
+            Together With Their Beloved Families
+          </p>
+
+          <h2 class="font-script text-5xl text-noor-burgundy mt-1">
+            Harsh <span class="font-garamond italic text-2xl text-noor-gold">&amp;</span> Anjali
+          </h2>
+
+          <p class="font-garamond italic text-base text-noor-ink/85 mt-1">
+            invite you to share in the joy of their sacred union
+          </p>
+        </div>
+      </div>
+
+      <!-- ================================================================= -->
+      <!-- ROYAL FAMILY BLESSINGS SCROLL (Groom & Bride Parents Details)     -->
+      <!-- ================================================================= -->
+	<article class="royal-scroll-wrapper scroll-unroll-trigger">
+      <div class="mt-7 royal-scroll-wrapper unrolled" id="familyBlessingsScroll">
+        <div class="scroll-roller-top"></div>
+        <div class="scroll-parchment-sheet mx-2.5">
+          <div class="scroll-parchment-inner px-5 py-6 text-center">
+            <p class="font-cinzel text-[10px] tracking-[0.24em] uppercase text-noor-deepGold font-bold">
+              With Heavenly Blessings
+            </p>
+
+            <!-- GROOM DETAILS -->
+            <div class="mt-3">
+              <h3 class="font-script text-4xl text-noor-burgundy">Harsh</h3>
+              <p class="font-garamond text-sm text-noor-ink/85 mt-1 leading-snug">
+                Beloved Son of<br/>
+                <strong class="font-semibold text-noor-ink">Shri Dinesh Kumar Gupta</strong> &amp; <strong class="font-semibold text-noor-ink">Smt. Maya Gupta</strong>
+              </p>
+            </div>
+
+            <div class="my-3 flex items-center justify-center gap-3">
+              <span class="h-[1px] w-10 bg-noor-gold"></span>
+              <span class="font-cinzel text-xs font-bold uppercase tracking-widest text-noor-sage">Weds</span>
+              <span class="h-[1px] w-10 bg-noor-gold"></span>
+            </div>
+
+            <!-- BRIDE DETAILS -->
+            <div>
+              <h3 class="font-script text-4xl text-noor-burgundy">Anjali</h3>
+              <p class="font-garamond text-sm text-noor-ink/85 mt-1 leading-snug">
+                Beloved Daughter of<br/>
+                <strong class="font-semibold text-noor-ink">Late Shri Manoj Ji Jain</strong> &amp; <strong class="font-semibold text-noor-ink">Smt. Jyoti Jain</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="scroll-roller-bottom"></div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- SECTION 3: INTERACTIVE SCRATCH-TO-REVEAL DATE (4 DEC 2026)          -->
+    <!-- =================================================================== -->
+    <section class="py-8 px-4 text-center bg-[#FDF2E3]/80 border-y border-noor-gold/40">
+      <span class="font-cinzel text-[10px] tracking-[0.26em] uppercase text-noor-sage font-bold">
+        Save The Auspicious Date
+      </span>
+      <h2 class="font-serif text-2xl font-bold text-noor-terracotta mt-1">
+        Reveal The Wedding Day
+      </h2>
+      <p class="font-garamond italic text-sm text-noor-ink/80 mt-0.5">
+        Rub the golden seal with your finger or tap reveal below
+      </p>
+
+      <!-- Circular Gold Foil Scratch Medallion -->
+      <div class="relative w-[210px] h-[210px] mx-auto mt-5 rounded-full p-2 gold-foil shadow-[0_12px_30px_rgba(138,82,44,0.28)]">
+        <div class="relative w-full h-full rounded-full bg-[#FDF2E3] border-2 border-noor-deepGold flex flex-col items-center justify-center overflow-hidden select-none">
+          <span class="font-cinzel text-[10px] tracking-[0.22em] uppercase text-noor-sage font-bold">
+            Friday
+          </span>
+          <span class="font-serif text-5xl font-bold text-noor-burgundy leading-none my-1">
+            4
+          </span>
+          <span class="font-cinzel text-sm font-bold tracking-[0.2em] uppercase text-noor-terracotta">
+            December 2026
+          </span>
+          <span class="font-garamond italic text-xs text-noor-ink/80 mt-1">
+            Jaipur, Rajasthan
+          </span>
+
+          <!-- Scratchable Gold Foil Canvas Overlay -->
+          <canvas id="dateScratchCanvas" width="230" height="230" class="absolute inset-0 w-full h-full cursor-pointer touch-none"></canvas>
+        </div>
+      </div>
+
+      <button id="tapRevealBtn" onclick="revealDateFoil()" class="mt-4 px-5 py-1.5 rounded-full border border-noor-gold bg-white/80 font-cinzel text-[10px] font-bold tracking-widest uppercase text-noor-terracotta hover:bg-noor-gold hover:text-white transition">
+        Tap to Reveal Date
+      </button>
+
+      <!-- Live Countdown Grid -->
+      <div class="grid grid-cols-4 gap-2 max-w-[320px] mx-auto mt-5">
+        <div class="bg-white/90 rounded-xl py-2 px-1 border border-noor-gold/50 shadow-xs">
+          <span id="cdDays" class="block font-serif text-xl font-bold text-noor-burgundy">00</span>
+          <span class="font-cinzel text-[9px] uppercase tracking-wider text-noor-sage font-bold">Days</span>
+        </div>
+        <div class="bg-white/90 rounded-xl py-2 px-1 border border-noor-gold/50 shadow-xs">
+          <span id="cdHours" class="block font-serif text-xl font-bold text-noor-burgundy">00</span>
+          <span class="font-cinzel text-[9px] uppercase tracking-wider text-noor-sage font-bold">Hours</span>
+        </div>
+        <div class="bg-white/90 rounded-xl py-2 px-1 border border-noor-gold/50 shadow-xs">
+          <span id="cdMins" class="block font-serif text-xl font-bold text-noor-burgundy">00</span>
+          <span class="font-cinzel text-[9px] uppercase tracking-wider text-noor-sage font-bold">Mins</span>
+        </div>
+        <div class="bg-white/90 rounded-xl py-2 px-1 border border-noor-gold/50 shadow-xs">
+          <span id="cdSecs" class="block font-serif text-xl font-bold text-noor-burgundy">00</span>
+          <span class="font-cinzel text-[9px] uppercase tracking-wider text-noor-sage font-bold">Secs</span>
+        </div>
+
+	
+      </div>
+	<div>
+		<button id="tapRevealBtn" onclick="saveReminder()" class="inline-flex items-center gap-2 mt-4 px-10 py-1.5 rounded-full border border-noor-gold bg-white/80 font-cinzel text-[10px] 		font-bold tracking-widest uppercase text-noor-terracotta hover:bg-noor-gold hover:text-white transition">
+    		<i data-lucide="calendar-plus" class='w-4 h-4'></i><span>Save Reminder</span>
+    		
+	</button>
+	</div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- SECTION 4: ANCIENT ROYAL SCROLLS (FARMAAN) FOR EVERY PROGRAM        -->
+    <!-- =================================================================== -->
+    <section id="programsScrollSection" class="py-12 px-4 courtyard-bg">
+      <div class="text-center max-w-[350px] mx-auto mb-8">
+        <span class="font-cinzel text-[10px] tracking-[0.26em] uppercase text-noor-sage font-bold">
+          Royal Itinerary Scrolls
+        </span>
+        <h2 class="font-serif text-3xl font-bold text-noor-terracotta mt-1">
+          Wedding Celebrations
+        </h2>
+        <p class="font-garamond italic text-base text-noor-ink/80 mt-1">
+          Scroll down slowly to unroll each royal parchment letter
+        </p>
+      </div>
+
+      <div class="space-y-12 max-w-[385px] mx-auto">
+
+        <!-- =============================================================== -->
+        <!-- ROYAL SCROLL 1: HALDI (1 DEC 2026 • 10:00 AM)                   -->
+        <!-- =============================================================== -->
+        <article class="royal-scroll-wrapper scroll-unroll-trigger">
+          <!-- Top Wooden/Brass Scroll Rod -->
+          <div class="scroll-roller-top"></div>
+
+          <!-- Unrolling Ancient Parchment Letter -->
+          <div class="scroll-parchment-sheet mx-2.5">
+            <div class="scroll-parchment-inner px-5 py-7 text-center">
+              <span class="inline-block px-3 py-0.5 rounded-full bg-amber-200/70 border border-amber-500/40 font-cinzel text-[10px] font-bold tracking-[0.2em] uppercase text-amber-900">
+                Pratham Samaroh
+              </span>
+
+              <h3 class="font-script text-5xl text-noor-burgundy mt-2">Haldi</h3>
+              <p class="font-garamond italic text-base text-noor-ink/85 mt-1">
+                “A sunlit morning of sacred turmeric blessings, marigold petals, and joyful family laughter.”
+              </p>
+
+              <div class="my-4 py-3 border-y border-noor-gold/45 space-y-1">
+                <p class="font-cinzel text-xs font-bold tracking-wider uppercase text-noor-ink">
+                  Tuesday, 1st December 2026
+                </p>
+                <p class="font-serif text-base font-bold text-noor-terracotta">
+                  10:00 AM onwards
+                </p>
+              </div>
+
+              <div class="space-y-1.5">
+                <p class="font-cinzel text-xs font-bold uppercase tracking-wider text-noor-sage">
+                  Shrii Vilas, Vaishali Nagar
+                </p>
+                <p class="font-garamond text-sm text-noor-ink/80">
+                  Vaishali Nagar, Jaipur, Rajasthan
+                </p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Shrii+Vilas+Vaishali+Nagar+Jaipur"
+                   target="_blank" rel="noopener noreferrer"
+                   class="mt-2 inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-noor-sage text-white font-cinzel text-[10px] font-bold tracking-widest uppercase shadow-sm hover:opacity-90 transition">
+                  <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+                  <span>Open Google Maps</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Wooden/Brass Scroll Rod -->
+          <div class="scroll-roller-bottom"></div>
+        </article>
+
+        <!-- =============================================================== -->
+        <!-- ROYAL SCROLL 2: SANGEET (1 DEC 2026 • 6:00 PM)                  -->
+        <!-- =============================================================== -->
+        <article class="royal-scroll-wrapper scroll-unroll-trigger">
+          <div class="scroll-roller-top"></div>
+
+          <div class="scroll-parchment-sheet mx-2.5">
+            <div class="scroll-parchment-inner px-5 py-7 text-center">
+              <span class="inline-block px-3 py-0.5 rounded-full bg-rose-200/70 border border-rose-400/50 font-cinzel text-[10px] font-bold tracking-[0.2em] uppercase text-noor-burgundy">
+                Dwitiya Samaroh
+              </span>
+
+              <h3 class="font-script text-5xl text-noor-burgundy mt-2">Sangeet</h3>
+              <p class="font-garamond italic text-base text-noor-ink/85 mt-1">
+                “An unforgettable evening of soulful melodies, rhythmic beats, and starlit family performances.”
+              </p>
+
+              <div class="my-4 py-3 border-y border-noor-gold/45 space-y-1">
+                <p class="font-cinzel text-xs font-bold tracking-wider uppercase text-noor-ink">
+                  Tuesday, 1st December 2026
+                </p>
+                <p class="font-serif text-base font-bold text-noor-terracotta">
+                  6:00 PM onwards
+                </p>
+              </div>
+
+              <div class="space-y-1.5">
+                <p class="font-cinzel text-xs font-bold uppercase tracking-wider text-noor-sage">
+                  Shrii Vilas, Vaishali Nagar
+                </p>
+                <p class="font-garamond text-sm text-noor-ink/80">
+                  Vaishali Nagar, Jaipur, Rajasthan
+                </p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Shrii+Vilas+Vaishali+Nagar+Jaipur"
+                   target="_blank" rel="noopener noreferrer"
+                   class="mt-2 inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-noor-sage text-white font-cinzel text-[10px] font-bold tracking-widest uppercase shadow-sm hover:opacity-90 transition">
+                  <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+                  <span>Open Google Maps</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="scroll-roller-bottom"></div>
+        </article>
+
+        <!-- =============================================================== -->
+        <!-- ROYAL SCROLL 3: MEHANDI (3 DEC 2026 • 12:00 PM)                 -->
+        <!-- =============================================================== -->
+        <article class="royal-scroll-wrapper scroll-unroll-trigger">
+          <div class="scroll-roller-top"></div>
+
+          <div class="scroll-parchment-sheet mx-2.5">
+            <div class="scroll-parchment-inner px-5 py-7 text-center">
+              <span class="inline-block px-3 py-0.5 rounded-full bg-emerald-200/70 border border-emerald-500/40 font-cinzel text-[10px] font-bold tracking-[0.2em] uppercase text-emerald-950">
+                Tritiya Samaroh
+              </span>
+
+              <h3 class="font-script text-5xl text-noor-burgundy mt-2">Mehandi</h3>
+              <p class="font-garamond italic text-base text-noor-ink/85 mt-1">
+                “Fragrant henna designs, traditional folk songs, and warm hospitality at our family abode.”
+              </p>
+
+              <div class="my-4 py-3 border-y border-noor-gold/45 space-y-1">
+                <p class="font-cinzel text-xs font-bold tracking-wider uppercase text-noor-ink">
+                  Thursday, 3rd December 2026
+                </p>
+                <p class="font-serif text-base font-bold text-noor-terracotta">
+                  12:00 PM onwards
+                </p>
+              </div>
+
+              <div class="space-y-1.5">
+                <p class="font-cinzel text-xs font-bold uppercase tracking-wider text-noor-sage">
+                  At Residence, Jhotwara
+                </p>
+                <p class="font-garamond text-sm text-noor-ink/90 leading-snug">
+                  24B, Ram Nagar Vistar, Brij Mandal Colony, Jhotwara, Jaipur, Rajasthan 302012
+                </p>
+                <a href="https://www.google.com/maps/search/?api=1&query=24B+Ram+Nagar+Vistar+Brij+Mandal+Colony+Jhotwara+Jaipur+302012"
+                   target="_blank" rel="noopener noreferrer"
+                   class="mt-2 inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-noor-sage text-white font-cinzel text-[10px] font-bold tracking-widest uppercase shadow-sm hover:opacity-90 transition">
+                  <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+                  <span>Open Google Maps</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="scroll-roller-bottom"></div>
+        </article>
+
+        <!-- =============================================================== -->
+        <!-- ROYAL SCROLL 4: SHAADI (4 DEC 2026 • 6:00 PM)                   -->
+        <!-- =============================================================== -->
+        <article class="royal-scroll-wrapper scroll-unroll-trigger">
+          <div class="scroll-roller-top"></div>
+
+          <div class="scroll-parchment-sheet mx-2.5">
+            <div class="scroll-parchment-inner px-5 py-7 text-center">
+              <span class="inline-block px-3 py-0.5 rounded-full bg-amber-300/60 border border-noor-deepGold/50 font-cinzel text-[10px] font-bold tracking-[0.2em] uppercase text-noor-burgundy">
+                Shubh Vivah • The Royal Union
+              </span>
+
+              <h3 class="font-script text-5xl text-noor-burgundy mt-2">Shaadi</h3>
+              <p class="font-garamond italic text-base text-noor-ink/85 mt-1">
+                “Royal Baraat welcome, sacred Varmala, and eternal Pheras around the holy Agni.”
+              </p>
+
+              <div class="my-4 py-3 border-y border-noor-gold/45 space-y-1">
+                <p class="font-cinzel text-xs font-bold tracking-wider uppercase text-noor-ink">
+                  Friday, 4th December 2026
+                </p>
+                <p class="font-serif text-base font-bold text-noor-terracotta">
+                  6:00 PM onwards
+                </p>
+              </div>
+
+              <div class="space-y-1.5">
+                <p class="font-cinzel text-xs font-bold uppercase tracking-wider text-noor-sage">
+                  Mangalam Palace, Mansarovar
+                </p>
+                <p class="font-garamond text-sm text-noor-ink/80">
+                  Mansarovar, Jaipur, Rajasthan
+                </p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Mangalam+Palace+Mansarovar+Jaipur"
+                   target="_blank" rel="noopener noreferrer"
+                   class="mt-2 inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-noor-burgundy text-amber-100 font-cinzel text-[10px] font-bold tracking-widest uppercase shadow-sm hover:opacity-90 transition">
+                  <i data-lucide="map-pin" class="w-3.5 h-3.5 text-amber-300"></i>
+                  <span>Open Google Maps</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="scroll-roller-bottom"></div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- SECTION 5: ROPE-TIED FLOATING COUPLE GALLERY (SWIPE HORIZONTALLY)   -->
+    <!-- =================================================================== -->
+    <section class="py-12 bg-[#FDF2E3] border-t border-noor-gold/40 overflow-hidden">
+      <div class="text-center px-5 mb-5">
+        <span class="font-cinzel text-[10px] tracking-[0.26em] uppercase text-noor-sage font-bold">
+          Cherished Memories
+        </span>
+        <h2 class="font-serif text-2xl font-bold text-noor-terracotta mt-1">
+          Harsh &amp; Anjali
+        </h2>
+        <p class="font-garamond italic text-sm text-noor-ink/75 mt-0.5">
+          Swipe horizontally to view moments hanging on the golden thread
+        </p>
+      </div>
+
+      <!-- Horizontal Swipe Track with Continuous Overhead Twisted Rope -->
+      <div class="relative w-full overflow-x-auto no-scrollbar snap-x snap-mandatory py-2">
+        <div class="relative inline-flex items-start gap-6 px-7 min-w-max">
+          
+          <!-- Continuous Overhead Twisted Rope -->
+          <div class="hanging-rope-line absolute top-2 left-0 right-0 z-10 pointer-events-none"></div>
+
+          <!-- ============================================================= -->
+          <!-- [IMAGE SLOT 2]: HANGING COUPLE PHOTO 1                        -->
+          <!-- HOW TO REPLACE: Change `src="..."` to your couple photo path  -->
+          <!-- ============================================================= -->
+          <div class="snap-center pt-2 hanging-frame-a relative flex flex-col items-center">
+            <!-- Wooden/Brass Peg Clipping Photo to Rope -->
+            <div class="w-4 h-7 -mt-2.5 z-20 rounded-xs bg-gradient-to-b from-[#6E421A] via-[#D9B166] to-[#5C3513] border border-[#3D210A] shadow-md"></div>
+            <!-- Floating Polaroid Card -->
+            <div class="w-48 bg-white p-2.5 pb-5 rounded-md shadow-[0_14px_28px_rgba(74,44,24,0.22)] border border-noor-gold/50 -mt-1">
+              <div class="aspect-[3/4] w-full overflow-hidden rounded-xs bg-[#FAF0DD]">
+                <img
+                  src="Nds (363).jpg"
+                  alt="Harsh and Anjali Moment 1"
+                  class="w-full h-full object-cover object-top"
+                  onerror="this.onerror=null; this.src='https://placehold.co/400x520/FDF2E3/8A522C?text=Couple+Photo+1';"
+                />
+              </div>
+              <p class="font-script text-2xl text-noor-burgundy text-center mt-2 leading-none">
+                Forever Begins
+              </p>
+            </div>
+          </div>
+          <!-- END OF [IMAGE SLOT 2] -->
+
+          <!-- ============================================================= -->
+          <!-- [IMAGE SLOT 3]: HANGING COUPLE PHOTO 2                        -->
+          <!-- HOW TO REPLACE: Change `src="..."` to your couple photo path  -->
+          <!-- ============================================================= -->
+          <div class="snap-center pt-2 hanging-frame-b relative flex flex-col items-center">
+            <div class="w-4 h-7 -mt-2.5 z-20 rounded-xs bg-gradient-to-b from-[#6E421A] via-[#D9B166] to-[#5C3513] border border-[#3D210A] shadow-md"></div>
+            <div class="w-48 bg-white p-2.5 pb-5 rounded-md shadow-[0_14px_28px_rgba(74,44,24,0.22)] border border-noor-gold/50 -mt-1">
+              <div class="aspect-[3/4] w-full overflow-hidden rounded-xs bg-[#FAF0DD]">
+                <img
+                  src="Nds (431).jpg"
+                  alt="Harsh and Anjali Moment 2"
+                  class="w-full h-full object-cover object-top"
+                  onerror="this.onerror=null; this.src='https://placehold.co/400x520/FDF2E3/6C846B?text=Couple+Photo+2';"
+                />
+              </div>
+              <p class="font-script text-2xl text-noor-burgundy text-center mt-2 leading-none">
+                Two Souls, One Heart
+              </p>
+            </div>
+          </div>
+          <!-- END OF [IMAGE SLOT 3] -->
+
+          <!-- ============================================================= -->
+          <!-- [IMAGE SLOT 4]: HANGING COUPLE PHOTO 3 (Add your 3rd photo!)  -->
+          <!-- HOW TO REPLACE: Change `src="..."` to your 3rd photo path     -->
+          <!-- ============================================================= -->
+          <div class="snap-center pt-2 hanging-frame-a relative flex flex-col items-center">
+            <div class="w-4 h-7 -mt-2.5 z-20 rounded-xs bg-gradient-to-b from-[#6E421A] via-[#D9B166] to-[#5C3513] border border-[#3D210A] shadow-md"></div>
+            <div class="w-48 bg-white p-2.5 pb-5 rounded-md shadow-[0_14px_28px_rgba(74,44,24,0.22)] border border-noor-gold/50 -mt-1">
+              <div class="aspect-[3/4] w-full overflow-hidden rounded-xs bg-[#FAF0DD]">
+                <img
+                  src="Nds (459).jpg"
+                  alt="Harsh and Anjali Moment 3"
+                  class="w-full h-full object-cover object-top"
+                  onerror="this.onerror=null; this.src='https://placehold.co/400x520/FDF2E3/8A522C?text=Add+Photo+3';"
+                />
+              </div>
+              <p class="font-script text-2xl text-noor-burgundy text-center mt-2 leading-none">
+                Soulful Moments
+              </p>
+            </div>
+          </div>
+          <!-- END OF [IMAGE SLOT 4] -->
+
+          <!-- ============================================================= -->
+          <!-- [IMAGE SLOT 5]: HANGING COUPLE PHOTO 4 (Add your 4th photo!)  -->
+          <!-- HOW TO REPLACE: Change `src="..."` to your 4th photo path     -->
+          <!-- ============================================================= -->
+          <div class="snap-center pt-2 hanging-frame-b relative flex flex-col items-center">
+            <div class="w-4 h-7 -mt-2.5 z-20 rounded-xs bg-gradient-to-b from-[#6E421A] via-[#D9B166] to-[#5C3513] border border-[#3D210A] shadow-md"></div>
+            <div class="w-48 bg-white p-2.5 pb-5 rounded-md shadow-[0_14px_28px_rgba(74,44,24,0.22)] border border-noor-gold/50 -mt-1">
+              <div class="aspect-[3/4] w-full overflow-hidden rounded-xs bg-[#FAF0DD]">
+                <img
+                  src="Nds (87).jpg"
+                  alt="Harsh and Anjali Moment 4"
+                  class="w-full h-full object-cover object-top"
+                  onerror="this.onerror=null; this.src='https://placehold.co/400x520/FDF2E3/6C846B?text=Add+Photo+4';"
+                />
+              </div>
+              <p class="font-script text-2xl text-noor-burgundy text-center mt-2 leading-none">
+                Jaipur Celebrations
+              </p>
+            </div>
+          </div>
+          <!-- END OF [IMAGE SLOT 5] -->
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- SECTION 6: RSVP & DIRECT WHATSAPP MESSAGE CONFIRMATION              -->
+    <!-- =================================================================== -->
+    <section id="rsvpSection" class="py-12 px-5 bg-[#E7EFE4] border-t-2 border-noor-sage/40">
+      <div class="max-w-[370px] mx-auto">
+        <div class="text-center mb-6">
+          <span class="font-cinzel text-[10px] tracking-[0.26em] uppercase text-noor-sage font-bold">
+            Kindly Respond
+          </span>
+          <h2 class="font-serif text-2xl font-bold text-noor-terracotta mt-1">
+            RSVP &amp; Blessings
+          </h2>
+          <p class="font-garamond italic text-base text-noor-ink/80 mt-0.5">
+            Send your RSVP directly via WhatsApp
+          </p>
+        </div>
+
+        <form id="rsvpForm" onsubmit="handleRSVP(event)" class="bg-[#FDF2E3] rounded-3xl p-5 border-2 border-noor-gold/70 shadow-lg space-y-3.5">
+          <div>
+            <label class="block font-cinzel text-[10px] font-bold uppercase tracking-wider text-noor-terracotta mb-1">
+              Your Full Name *
+            </label>
+            <input type="text" id="guestNameInput" required placeholder="Enter your name"
+                   class="w-full px-3.5 py-2 rounded-xl bg-white border border-noor-gold/50 text-sm focus:outline-none focus:border-noor-sage" />
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block font-cinzel text-[10px] font-bold uppercase tracking-wider text-noor-terracotta mb-1">
+                Attending Status
+              </label>
+              <select id="guestStatusInput" class="w-full px-3 py-2 rounded-xl bg-white border border-noor-gold/50 text-sm focus:outline-none focus:border-noor-sage">
+                <option value="Joyfully Attending">Joyfully Attending</option>
+                <option value="Sending Warm Wishes">Sending Wishes</option>
+              </select>
+            </div>
+            <div>
+              <label class="block font-cinzel text-[10px] font-bold uppercase tracking-wider text-noor-terracotta mb-1">
+                Guests
+              </label>
+              <select id="guestCountInput" class="w-full px-3 py-2 rounded-xl bg-white border border-noor-gold/50 text-sm focus:outline-none focus:border-noor-sage">
+                <option value="1">1 Guest</option>
+                <option value="2" selected>2 Guests</option>
+                <option value="3">3 Guests</option>
+                <option value="4">4 Guests</option>
+                <option value="5+">Family (5+)</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block font-cinzel text-[10px] font-bold uppercase tracking-wider text-noor-terracotta mb-1">
+              Blessings for Harsh &amp; Anjali
+            </label>
+            <textarea id="guestWishInput" rows="2" placeholder="Write a warm blessing..."
+                      class="w-full px-3.5 py-2 rounded-xl bg-white border border-noor-gold/50 text-sm focus:outline-none focus:border-noor-sage"></textarea>
+          </div>
+
+          <button type="submit" class="w-full py-3 rounded-full cartouche-btn text-[#7D3532] font-cinzel text-xs font-bold tracking-[0.18em] uppercase shadow-md active:scale-95 transition flex items-center justify-center gap-2">
+            <i data-lucide="message-circle" class="w-4 h-4"></i>
+            <span>Prepare WhatsApp RSVP</span>
+          </button>
+        </form>
+
+        <!-- User Permission & Direct WhatsApp Launch Card -->
+        <div id="rsvpConfirmBox" class="hidden mt-4 bg-[#FDF2E3] rounded-2xl p-4 border-2 border-noor-sage text-center shadow-md space-y-3">
+          <p class="font-serif font-bold text-noor-burgundy text-lg">Your WhatsApp RSVP is Ready!</p>
+          <p id="rsvpConfirmText" class="font-garamond text-sm text-noor-ink bg-white/80 p-3 rounded-xl border border-noor-gold/40 text-left whitespace-pre-line"></p>
+          <p class="font-garamond italic text-xs text-noor-ink/75">
+            With your permission, tap below to open WhatsApp and send this message:
+          </p>
+          <a id="whatsappSendAnchor" href="#" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-full bg-[#25D366] text-white font-cinzel text-xs font-bold tracking-wider uppercase shadow hover:opacity-95 transition">
+            <i data-lucide="send" class="w-3.5 h-3.5"></i>
+            <span>Open WhatsApp &amp; Send</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =================================================================== -->
+    <!-- FOOTER                                                              -->
+    <!-- =================================================================== -->
+    <footer class="bg-[#FDF2E3] text-center py-9 px-5 border-t border-noor-sage/30">
+      <p class="font-cinzel text-[10px] tracking-[0.24em] uppercase text-noor-sage font-bold">
+        With Warmest Regards
+      </p>
+      <h2 class="font-garamond text-[25px] text-noor-ink/85 mt-1">
+        Rajoriya Family
+      </h2>
+      <p class="font-cinzel text-[10px] tracking-widest uppercase text-noor-terracotta mt-1">
+        4th December 2026 • Jaipur
+      </p>
+
+      <button onclick="copyInviteLink()" class="mt-4 inline-flex items-center gap-2 px-5 py-2 rounded-full bg-noor-sage text-white font-cinzel text-[10px] font-bold tracking-widest uppercase shadow-xs hover:opacity-90 transition">
+        <i data-lucide="share-2" class="w-3.5 h-3.5"></i>
+        <span>Share Invitation</span>
+      </button>
+    </footer>
+
+  </div>
+
+  <!-- Toast Message -->
+  <div id="toastMsg" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 bg-noor-ink text-noor-cream px-5 py-2 rounded-full text-xs font-cinzel tracking-wider shadow-xl opacity-0 pointer-events-none transition-opacity duration-300">
+    Copied!
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- JAVASCRIPT: COVER ENVELOPE, SCROLL-UNROLLING LETTERS, SCRATCH FOIL    -->
+  <!-- ===================================================================== -->
+  <script>
+    // 1. OPEN THE NOOR PATRA COVER ENVELOPE ("Tap to open")
+    function openRoyalInvitation() {
+      const overlay = document.getElementById('coverEnvelopeOverlay');
+      if (overlay) {
+        overlay.classList.add('opened');
+      }
+      startChimesQuietly();
+      // Recalculate scroll-unrolling heights right after cover opens
+      setTimeout(() => {
+        window.dispatchEvent(new Event('scroll'));
+      }, 150);
+    }
+
+    // 2. PERSONALIZED GUEST NAME FROM URL (?guest=Mr.+Patidar+and+Family)
+    function applyPersonalizedGuestName() {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const guest = params.get('guest');
+        if (guest && guest.trim()) {
+          const heading = document.getElementById('guestGreetingHeading');
+          if (heading) heading.textContent = guest.trim();
+        }
+      } catch (err) {
+        console.warn('Guest query parse skipped', err);
+      }
+    }
+
+    // 3. CONTINUOUS SCROLL-DRIVEN ANCIENT LETTER UNROLLING (Farmaan Effect)
+    // Maps the scroll position of each scroll wrapper to its unrolled parchment height
+    function initScrollUnrollingLetters() {
+      const scrolls = Array.from(document.querySelectorAll('.scroll-unroll-trigger'));
+
+      function updateScrollUnrollProgress() {
+        const vh = window.innerHeight;
+        const startTrigger = vh * 0.86;
+        const endTrigger = vh * 0.36;
+        const travelRange = Math.max(startTrigger - endTrigger, 120);
+
+        scrolls.forEach((scrollEl) => {
+          const sheet = scrollEl.querySelector('.scroll-parchment-sheet');
+          const inner = scrollEl.querySelector('.scroll-parchment-inner');
+          if (!sheet || !inner) return;
+
+          const rect = scrollEl.getBoundingClientRect();
+          const rawProgress = (startTrigger - rect.top) / travelRange;
+          const progress = Math.min(Math.max(rawProgress, 0), 1);
+
+          const targetHeight = inner.scrollHeight;
+          sheet.style.height = `${Math.round(progress * targetHeight)}px`;
+
+          inner.style.opacity = progress > 0.35 ? Math.min((progress - 0.35) / 0.45, 1) : 0;
+          inner.style.transform = `translateY(${(1 - progress) * -12}px)`;
+        });
+      }
+
+      window.addEventListener('scroll', updateScrollUnrollProgress, { passive: true });
+      window.addEventListener('resize', updateScrollUnrollProgress, { passive: true });
+      updateScrollUnrollProgress();
+    }
+
+    // 4. SCRATCH-TO-REVEAL DATE FOIL (4 DEC 2026)
+    function initDateScratchCanvas() {
+      const canvas = document.getElementById('dateScratchCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      const grad = ctx.createLinearGradient(0, 0, 230, 230);
+      grad.addColorStop(0, '#A37A27');
+      grad.addColorStop(0.4, '#F5E1A4');
+      grad.addColorStop(0.7, '#C99E44');
+      grad.addColorStop(1, '#8A6316');
+
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, 230, 230);
+
+      ctx.strokeStyle = 'rgba(74, 44, 24, 0.45)';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(115, 115, 96, 0, Math.PI * 2);
+      ctx.stroke();
+
+      ctx.fillStyle = '#4A2C18';
+      ctx.font = 'bold 13px Cinzel, serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('SCRATCH TO REVEAL', 115, 110);
+      ctx.font = 'italic 14px "Cormorant Garamond", serif';
+      ctx.fillText('Wedding Date', 115, 130);
+
+      let scratching = false;
+      function scratch(clientX, clientY) {
+        const rect = canvas.getBoundingClientRect();
+        const x = ((clientX - rect.left) / rect.width) * canvas.width;
+        const y = ((clientY - rect.top) / rect.height) * canvas.height;
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.beginPath();
+        ctx.arc(x, y, 22, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      canvas.addEventListener('mousedown', (e) => { scratching = true; scratch(e.clientX, e.clientY); });
+      canvas.addEventListener('mousemove', (e) => { if (scratching) scratch(e.clientX, e.clientY); });
+      window.addEventListener('mouseup', () => { scratching = false; });
+
+      canvas.addEventListener('touchstart', (e) => {
+        scratching = true;
+        scratch(e.touches[0].clientX, e.touches[0].clientY);
+      }, { passive: true });
+      canvas.addEventListener('touchmove', (e) => {
+        if (!scratching) return;
+        scratch(e.touches[0].clientX, e.touches[0].clientY);
+      }, { passive: true });
+      canvas.addEventListener('touchend', () => { scratching = false; });
+    }
+
+    function revealDateFoil() {
+      const canvas = document.getElementById('dateScratchCanvas');
+      if (!canvas) return;
+      canvas.style.transition = 'opacity 0.55s ease';
+      canvas.style.opacity = '0';
+      setTimeout(() => canvas.remove(), 580);
+      const btn = document.getElementById('tapRevealBtn');
+      if (btn) btn.innerText = '4th December 2026 Unveiled!';
+    }
+
+    // 5. LIVE COUNTDOWN TO 4 DECEMBER 2026, 6:00 PM IST
+    function updateCountdownTimer() {
+      const target = new Date('2026-12-04T18:00:00+05:30').getTime();
+      const diff = Math.max(target - Date.now(), 0);
+
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const m = Math.floor((diff / (1000 * 60)) % 60);
+      const s = Math.floor((diff / 1000) % 60);
+
+      const elD = document.getElementById('cdDays');
+      const elH = document.getElementById('cdHours');
+      const elM = document.getElementById('cdMins');
+      const elS = document.getElementById('cdSecs');
+      if (elD) elD.innerText = String(d).padStart(2, '0');
+      if (elH) elH.innerText = String(h).padStart(2, '0');
+      if (elM) elM.innerText = String(m).padStart(2, '0');
+      if (elS) elS.innerText = String(s).padStart(2, '0');
+    }
+
+    // 6. FLOATING ROSE & LOTUS PETALS
+    function spawnPetals() {
+      const container = document.getElementById('petalsContainer');
+      if (!container) return;
+      const colors = ['#F1B5AC', '#E7A198', '#E8C77B', '#F4C2C2'];
+      for (let i = 0; i < 12; i++) {
+        const el = document.createElement('div');
+        el.className = 'petal';
+        const size = 9 + Math.random() * 7;
+        el.style.left = `${Math.random() * 100}vw`;
+        el.style.animationDuration = `${10 + Math.random() * 8}s`;
+        el.style.animationDelay = `${Math.random() * 7}s`;
+        el.innerHTML = `<svg width="${size}" height="${size}" viewBox="0 0 20 20"><path d="M10 1 C16 5 18 13 10 19 C2 13 4 5 10 1 Z" fill="${colors[i % colors.length]}" opacity="0.7"/></svg>`;
+        container.appendChild(el);
+      }
+    }
+
+    // 7. AMBIENT TEMPLE CHIMES (Web Audio API)
+    
+let chimeAudio = null;
+let chimeTimer = null;
+let chimesOn = false;
+
+function startChimesQuietly() {
+    if (chimesOn) return;
+
+    try {
+        chimeAudio = new Audio('mangalRang.mp3');
+        chimeAudio.volume = 0.4;
+        chimeAudio.loop = true;
+
+        chimeAudio.play();
+
+        chimesOn = true;
+
+        const icon = document.getElementById('chimeIcon');
+        if (icon) {
+            icon.setAttribute('data-lucide', 'volume-2');
+            lucide.createIcons();
+        }
+
+    } catch (e) {
+        console.warn('Audio chimes skipped', e);
+    }
+}
+
+function toggleTempleChimes() {
+    if (chimesOn) {
+        if (chimeAudio) {
+            chimeAudio.pause();
+            chimeAudio.currentTime = 0;
+        }
+
+        chimesOn = false;
+
+        const icon = document.getElementById('chimeIcon');
+        if (icon) {
+            icon.setAttribute('data-lucide', 'volume');
+            lucide.createIcons();
+        }
+
+    } else {
+        startChimesQuietly();
+    }
+}
+
+
+    // 8. RSVP WITH USER-APPROVED WHATSAPP MESSAGE LAUNCH
+    const WHATSAPP_RECIPIENT_NUMBER = '';
+
+    function handleRSVP(e) {
+      e.preventDefault();
+      const name = document.getElementById('guestNameInput').value.trim();
+      const status = document.getElementById('guestStatusInput').value;
+      const count = document.getElementById('guestCountInput').value;
+      const wish = document.getElementById('guestWishInput').value.trim();
+
+      const messageLines = [
+        `Namaste! *Wedding RSVP — Harsh & Anjali (4 Dec 2026)*`,
+        `• *Name:* ${name}`,
+        `• *Response:* ${status}`,
+        `• *Number of Guests:* ${count}`,
+        wish ? `• *Blessings:* "${wish}"` : ''
+      ].filter(Boolean).join('\n');
+
+      const encodedMsg = encodeURIComponent(messageLines);
+      const waUrl = WHATSAPP_RECIPIENT_NUMBER
+        ? `https://wa.me/8290702889?text=${encodedMsg}`
+        : `https://wa.me/8290702889?text=${encodedMsg}`;
+
+      document.getElementById('rsvpConfirmText').innerText = messageLines;
+      document.getElementById('whatsappSendAnchor').href = waUrl;
+      document.getElementById('rsvpConfirmBox').classList.remove('hidden');
+      lucide.createIcons();
+      showToast('WhatsApp message ready!');
+    }
+
+    function copyInviteLink() {
+      const ta = document.createElement('textarea');
+      ta.value = `You are cordially invited to the wedding of Harsh & Anjali on 4th December 2026 in Jaipur! ${window.location.href}`;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      showToast('Invitation link copied!');
+    }
+
+    function showToast(text) {
+      const t = document.getElementById('toastMsg');
+      t.innerText = text;
+      t.classList.remove('opacity-0');
+      t.classList.add('opacity-100');
+      setTimeout(() => {
+        t.classList.remove('opacity-100');
+        t.classList.add('opacity-0');
+      }, 2200);
+    }
+
+    window.onload = function () {
+      lucide.createIcons();
+      applyPersonalizedGuestName();
+      initScrollUnrollingLetters();
+      initDateScratchCanvas();
+      updateCountdownTimer();
+      setInterval(updateCountdownTimer, 1000);
+      spawnPetals();
+    };
+
+    // 9. Save Reminder
+
+	
+	function saveReminder() {
+    const eventTitle = "Harsh & Anjali Wedding";
+
+    // Event date and time
+    const startDate = "20261204T180000";
+    const endDate = "20261204T230000";
+
+    const icsContent = `BEGIN:VCALENDAR
+	VERSION:2.0
+	PRODID:-//Wedding Reminder//EN
+	BEGIN:VEVENT
+	UID:khandelwalharsh306@gmail.com
+	DTSTAMP:20261119T120000Z
+	DTSTART:${startDate}
+	DTEND:${endDate}
+	SUMMARY:${eventTitle}
+	DESCRIPTION:Join us to celebrate Harsh & Anjali's wedding!
+	LOCATION:Mangalam Palace, Mansarovar, Jaipur
+	BEGIN:VALARM
+	TRIGGER:-P1D
+	ACTION:DISPLAY
+	DESCRIPTION:Wedding Reminder
+	END:VALARM
+	END:VEVENT
+	END:VCALENDAR`;
+
+    const blob = new Blob([icsContent], {
+        type: "text/calendar;charset=utf-8"
+    });
+
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "Harsh-Anjali-Wedding.ics";
+    link.click();
+
+    URL.revokeObjectURL(link.href);
+}
+
+  </script>
+</body>
+</html>
